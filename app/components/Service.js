@@ -9,7 +9,7 @@ const Service = ({ header, details, label, button }) => {
     <div
       className={`${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
-      } flex flex-col gap-5 font-sans text-lg p-5 rounded-lg shadow-md`}
+      } flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md`}
     >
       <header className="flex justify-center">
         <h1 className="text-3xl font-semibold">{header}</h1>
