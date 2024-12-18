@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center  h-screen">
+    <div className="flex flex-col items-center overflow-x-hidden h-screen">
       <NavNar header="M2 HQ" />
       <p className="text-lg p-5">
         *Services vary due to my class schedule.* For additional information or
