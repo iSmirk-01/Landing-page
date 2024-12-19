@@ -22,14 +22,15 @@ function Contacts() {
         name3="Reviews"
       />
       <div className=" text-white flex flex-col h-screen justify-center items-center w-screen">
-        <div className="flex flex-col bg-slate-800 p-4 rounded-lg w-4/5 h-2/4 justify-center text-2xl border border-sky-300">
-          <h1 className="font-semibold">Contacts</h1>
+        <div className="flex gap-2 text-lg flex-col bg-slate-800 p-3 rounded-lg w-fit h-fit justify-center  border border-sky-300 m-4">
+          <h1 className="font-semibold self-center">Contacts</h1>
           <br />
 
           <p>
-            <span className="text-red-500">Email: </span>
+            <span className="text-red-500 font-bold">Email: </span>
             Mtwotech.business@gmail.com
           </p>
+          <hr></hr>
           <p>
             Direct message via{" "}
             <a
@@ -41,7 +42,8 @@ function Contacts() {
               Instagram
             </a>
           </p>
-          <p>
+          <hr></hr>
+          <p className="font-bold">
             <span className="font-semibold text-cyan-300">Mobile: </span>
             808-494-1499
           </p>
