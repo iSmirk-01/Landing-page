@@ -9,7 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        customLime: '#87cc79',
+        //light theme
+        LightThemeMainBlue: "#4A90E2",
+        LightThemeLightBlue: "#A4C8FF",
+        LightThemeAccentBlue: "#1D73B7",
+        //dark theme
+        DarkThemeMainBlue: "#2D72D9",
+        DarkThemeLightBlue: "#6C8FF5",
+        DarkThemeAccentBlue: "#1A4D7C",
+
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

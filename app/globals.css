@@ -4,12 +4,12 @@
 
 /* globals.css */
 :root {
-  --background: #f9fafb; /* Light mode background */
+  --background: #FFFFFF; /* Light mode background */
   --foreground: #1f2937; /* Light mode text */
 }
 
 .dark {
-  --background: #1f2937; /* Dark mode background */
+  --background: #000000 ; /* Dark mode background */
   --foreground: #f9fafb; /* Dark mode text */
 }
 

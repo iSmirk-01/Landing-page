@@ -8,7 +8,9 @@ const Service = ({ header, details, label, button }) => {
   return (
     <div
       className={`${
-        theme === "dark" ? "bg-gray-700 text-white" : "bg-gray-200 text-black"
+        theme === "dark"
+          ? "bg-gray-700 text-white border-cyan-300 border"
+          : "bg-gray-200 text-black border-black border"
       } flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md`}
     >
       <header className="flex justify-center">
@@ -26,7 +28,7 @@ const Service = ({ header, details, label, button }) => {
               : "bg-blue-600 hover:bg-blue-500 text-white"
           } rounded-md p-2`}
         >
-          {button || "Click here for details and pricing!"}
+          {button || "Details and Pricing"}
         </button>
       </footer>
     </div>

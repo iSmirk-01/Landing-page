@@ -9,7 +9,7 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       className={`${
-        theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+        theme === "dark" ? "bg-slate-300 text-black" : "bg-gray-800 text-white"
       } px-4 py-2 rounded`}
     >
       Switch to {theme === "light" ? "Dark" : "Light"} Mode
