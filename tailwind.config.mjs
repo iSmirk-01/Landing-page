@@ -8,6 +8,24 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        dynamic: "clamp(1rem, 0.1vw + 1rem, 20rem)", // Dynamic font size
+      },
+      spacing: {
+        dynamic: "clamp(1rem, 5vw + 2rem, 4rem)", // Dynamic width and height
+      },
+      maxWidth: {
+        dynamic: "clamp(10rem, 20vw + 5rem, 40rem)", // Dynamic max-width
+      },
+      maxHeight: {
+        dynamic: "clamp(5rem, 10vh + 10rem, 20rem)", // Dynamic max-height
+      },
+      padding: {
+        dynamic: "clamp(1rem, 3vw + 1rem, 2rem)", // Dynamic padding
+      },
+      margin: {
+        dynamic: "clamp(1rem, 3vw + 1rem, 4rem)", // Dynamic margin
+      },
       colors: {
         //light theme
         LightThemeMainBlue: "#4A90E2",

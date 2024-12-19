@@ -1,4 +1,4 @@
-"use client"; // Add this at the top to indicate client-side rendering
+"use client";
 
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
@@ -22,11 +22,10 @@ function Contacts() {
         name3="Reviews"
       />
       <div className=" text-white flex flex-col h-screen justify-center items-center w-screen">
-        <div className="flex gap-2 text-lg flex-col bg-slate-800 p-3 rounded-lg w-fit h-fit justify-center  border border-sky-300 m-4">
+        <div className="flex gap-2 flex-col bg-slate-800 p-5 rounded-lg w-[80vw] h-auto justify-center text-dynamic  items-center border border-sky-300 m-4">
           <h1 className="font-semibold self-center">Contacts</h1>
           <br />
-
-          <p>
+          <p className="">
             <span className="text-red-500 font-bold">Email: </span>
             Mtwotech.business@gmail.com
           </p>
