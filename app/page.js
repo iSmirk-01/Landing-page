@@ -3,9 +3,9 @@
 import Service from "./components/Service"; //header, details, label
 import TittleBar from "./components/TittleBar";
 import Footer from "./components/Footer";
-import Contacts from "./components/Navigation";
 import Notice from "./components/Notice";
 import { useTheme } from "./context/ThemeProvider";
+import Navigation from "./components/Navigation";
 
 export default function Home() {
   const {theme} = useTheme()
@@ -13,7 +13,7 @@ export default function Home() {
     <div className="flex flex-col items-center overflow-x-hidden h-screen">
       <TittleBar header="M2 HQ" />
       <Notice />
-      <Contacts />
+      <Navigation link1="contacts" link2="mission" link3="reviews" name1="Contacts" name2="Mission Statement" name3="Reviews"/>
       <main className="flex flex-col gap-5 p-4">
         <Service
           header="Parts Consultation"

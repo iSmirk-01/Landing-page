@@ -1,21 +1,27 @@
 "use client"
 import { useTheme } from '../context/ThemeProvider'
-import DivLink from './DivLink';
+import Link from 'next/link';
 
-function Navigation({ name }) {
+function Navigation({ name1, name2, name3, link1, link2, link3 }) {
   const { theme } = useTheme();
-  //flex justify-evenly text-2xl p-4 bg-red-400 w-3/4 rounded-md
+
   return (
     <div
       className={`${
         theme === "dark"
           ? " bg-DarkThemeMainBlue text-white"
           : " bg-LightThemeMainBlue text-black"
-      } flex justify-evenly text-lg p-4 w-screen rounded-md gap-1`}
+      } flex justify-evenly items-center text-lg p-4 w-screen rounded-md gap-1`}
     >
-      <DivLink link="contacts" name="Contacts" />
-      <DivLink link="mission-statement" name="Mission Statement" />
-      <DivLink link="reviews" name="Reviews" />
+      <div className="cursor-pointer">
+        <Link href={`/${link1}`}>{name1}</Link>
+      </div>
+      <div className="cursor-pointer">
+        <Link href={`/${link2}`}>{name2}</Link>
+      </div>
+      <div className="cursor-pointer">
+        <Link href={`/${link3}`}>{name3}</Link>
+      </div>
     </div>
   );
 }
