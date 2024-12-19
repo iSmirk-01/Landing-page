@@ -8,7 +8,7 @@ const Service = ({ header, details, label, button }) => {
   return (
     <div
       className={`${
-        theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+        theme === "dark" ? "bg-gray-700 text-white" : "bg-gray-200 text-black"
       } flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md`}
     >
       <header className="flex justify-center">
