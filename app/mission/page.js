@@ -6,7 +6,7 @@ import Notice from '../components/Notice';
 
 function Mission() {
   return (
-    <div className="flex flex-col overflow-x-hidden h-screen gap-4 items-center w-screen">
+    <div className="flex flex-col h-screen gap-4 items-center w-screen">
       <TittleBar header="M2 HQ" />
       <Notice />
       <Navigation
@@ -17,7 +17,7 @@ function Mission() {
         name2="Contacts"
         name3="Reviews"
       />
-      <div className=" text-white flex flex-col h-screen justify-center items-center w-screen overflow-hidden">
+      <div className=" text-white flex flex-col h-screen justify-center items-center w-screen ">
         <div className="flex flex-col bg-slate-800 p-4 rounded-lg w-fit h-fit m-4 justify-center text-2xl border border-sky-300">
           <h1 className="font-semibold self-center">Mission Statement</h1>
           <br />
