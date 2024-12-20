@@ -1,9 +1,8 @@
 "use client";
 
 import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import NavBar from "../components/NavBar";
 import Notice from "../components/Notice";
-import TittleBar from "../components/TittleBar";
 import { useTheme } from "../context/ThemeProvider";
 
 function Contacts() {
@@ -11,16 +10,8 @@ function Contacts() {
 
   return (
     <div className="flex flex-col overflow-x-hidden h-screen gap-4 items-center w-screen">
-      <TittleBar header="M2 HQ" />
+      <NavBar />
       <Notice />
-      <Navigation
-        link1=""
-        link2="mission"
-        link3="reviews"
-        name1="Services"
-        name2="Mission Statement"
-        name3="Reviews"
-      />
       <div className=" text-white flex flex-col h-screen justify-center items-center w-screen">
         <div className="flex gap-2 flex-col bg-slate-800 p-5 rounded-lg w-[80vw] h-auto justify-center text-dynamic  items-center border border-sky-300 m-4">
           <h1 className="font-semibold self-center">Contacts</h1>

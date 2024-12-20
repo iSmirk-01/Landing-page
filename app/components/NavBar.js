@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import  Link  from "next/link";
 
@@ -48,18 +49,10 @@ function NavBar() {
           <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link
-                href="services"
+                href="/"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
               >
                 Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/mission"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
-              >
-                Mission Statement
               </Link>
             </li>
             <li>
@@ -68,6 +61,22 @@ function NavBar() {
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
               >
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/reviews"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
+              >
+                Reviews
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/mission"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
+              >
+                Mission Statement
               </Link>
             </li>
           </ul>
