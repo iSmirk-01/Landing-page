@@ -6,7 +6,7 @@ function Contacts() {
 
   return (
     <div className="flex flex-col overflow-x-hidden h-screen gap-4 items-center w-full">
-        <div className="flex gap-2 flex-col bg-slate-800 p-5 rounded-lg w-[80vw] h-auto justify-center sm:text-sm md:text-base lg:text-lg whitespace-nowrap  border border-sky-300 m-4">
+        <div className="flex gap-2 flex-col bg-slate-800 p-5 rounded-lg w-fit  h-auto justify-center sm:text-sm md:text-base lg:text-lg whitespace-nowrap  border border-sky-300 m-4">
           <h1 className="font-semibold self-center text-2xl shadow-md">Contacts</h1>
           <br />
           <p className="">
