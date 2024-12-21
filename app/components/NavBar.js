@@ -1,20 +1,22 @@
-"use client"
+"use client";
 import { useState } from "react";
-import  Link  from "next/link";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function NavBar() {
-  // State to track menu visibility
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname()
+
+  console.log(pathname)
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="flex items-center space-x-3">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            H2 HQ
+            M2 HQ
           </span>
         </Link>
-
         {/* Hamburger Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)} // Toggle state
@@ -50,7 +52,11 @@ function NavBar() {
             <li>
               <Link
                 href="/"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                  pathname === "/"
+                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                    : " text-white"
+                }`}
               >
                 Services
               </Link>
@@ -58,15 +64,23 @@ function NavBar() {
             <li>
               <Link
                 href="/contacts"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                  pathname === "/contacts"
+                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                    : " text-white"
+                }`}
               >
-                Contact
+                Contacts
               </Link>
             </li>
             <li>
               <Link
                 href="/reviews"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                  pathname === "/reviews"
+                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                    : " text-white"
+                }`}
               >
                 Reviews
               </Link>
@@ -74,7 +88,11 @@ function NavBar() {
             <li>
               <Link
                 href="/mission"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                  pathname === "/mission"
+                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                    : " text-white"
+                }`}
               >
                 Mission Statement
               </Link>
