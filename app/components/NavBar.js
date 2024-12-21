@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggleButton";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ function NavBar() {
             M2 HQ
           </span>
         </Link>
+        <ThemeToggle />
         {/* Hamburger Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)} // Toggle state
@@ -52,10 +54,10 @@ function NavBar() {
             <li>
               <Link
                 href="/"
-                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                className={`block py-2 px-3 rounded hover:bg-gray-600 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
                   pathname === "/"
-                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
-                    : " text-white"
+                  ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                  : " text-white"
                 }`}
               >
                 Services
@@ -64,10 +66,10 @@ function NavBar() {
             <li>
               <Link
                 href="/contacts"
-                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                className={`block py-2 px-3 rounded hover:bg-gray-600 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
                   pathname === "/contacts"
-                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
-                    : " text-white"
+                  ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                  : " text-white"
                 }`}
               >
                 Contacts
@@ -76,10 +78,10 @@ function NavBar() {
             <li>
               <Link
                 href="/reviews"
-                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                className={`block py-2 px-3 rounded hover:bg-gray-600 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
                   pathname === "/reviews"
-                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
-                    : " text-white"
+                  ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                  : " text-white"
                 }`}
               >
                 Reviews
@@ -88,10 +90,10 @@ function NavBar() {
             <li>
               <Link
                 href="/mission"
-                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
+                className={`block py-2 px-3 rounded hover:bg-gray-600 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 focus:text-blue-700 ${
                   pathname === "/mission"
-                    ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
-                    : " text-white"
+                  ? "text-blue-400 underline decoration-solid underline-offset-4 decoration-sky-500"
+                  : " text-white"
                 }`}
               >
                 Mission Statement
