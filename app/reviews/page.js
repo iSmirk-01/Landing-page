@@ -1,6 +1,6 @@
 
 
-function page() {
+function Reviews() {
   return (
     <div className="flex flex-col overflow-x-hidden h-full gap-4 items-center w-full">
       <div className=" text-white flex flex-col h-screen justify-center items-center w-screen overflow-hidden">
@@ -13,4 +13,4 @@ function page() {
   );
 }
 
-export default page
+export default Reviews

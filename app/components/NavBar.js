@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeToggle from "./ThemeToggleButton";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);

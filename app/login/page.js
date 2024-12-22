@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
 import { IoPersonSharp } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
+import Link from "next/link";
 
 function Login() {
   const handleSubmit = (e) => {
@@ -43,6 +43,7 @@ function Login() {
           >
             Login
           </button>
+          <p className="text-base">Dont have an account? <Link href="/login/register" className="font-semibold underline active:text-blue-400">Register here</Link></p>
         </div>
       </form>
     </div>
