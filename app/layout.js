@@ -3,6 +3,7 @@ import { ThemeProvider } from "./context/ThemeProvider";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Notice from "./components/Notice";
+import { UserProvider } from "./context/UserProvider";
 
 export const metadata = {
   title: "M2 HQ",
@@ -14,10 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeProvider>
-          <NavBar />
-            <Notice />
-            {children}
-          <Footer />
+          <UserProvider>
+            <NavBar />
+              <Notice />
+              {children}
+            <Footer />
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>

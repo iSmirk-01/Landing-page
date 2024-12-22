@@ -1,4 +1,3 @@
-// /api/mongodb.js
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI; // Add this to your .env file
@@ -23,5 +22,10 @@ if (process.env.NODE_ENV === "development") {
   client = new MongoClient(uri, options);
   clientPromise = client.connect();
 }
+
+// Debug logs
+clientPromise
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("Error connecting to MongoDB:", error));
 
 export default clientPromise;
