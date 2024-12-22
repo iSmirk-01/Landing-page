@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { IoPersonSharp } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import Link from "next/link";
@@ -23,33 +23,41 @@ function Register() {
     }));
   };
 
-  const { setUserData } = useUser()
+  const { setUserData } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
 
-
     try {
-      const res = await axios.post("http://localhost:3000/api/register", {
+      const res = await axios.post("http://localhost:3000/api/auth/register", {
         username: formData.username,
         password: formData.password,
       });
-      if (res.ok) {
-        localStorage.setItem("username", res.data.username)
-        localStorage.setItem("token", res.data.token)
+
+      // Check for success response
+      if (res.status === 201) {
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("token", res.data.token);
         setUserData((prev) => ({
           ...prev,
           username: res.data.username,
-          token: res.data.token
-        }))
+          token: res.data.token,
+        }));
         setMessage(res.data.message);
       }
     } catch (err) {
-      setError("An error occurred during registration.");
-      localStorage.removeItem("username")
-      localStorage.removeItem("token")
+      // Check for duplicate username error
+      if (err.response?.status === 409) {
+        setError("Username already taken. Please choose a different one.");
+      } else {
+        setError("An error occurred during registration.");
+      }
+
+      // Clear any stored user data on error
+      localStorage.removeItem("username");
+      localStorage.removeItem("token");
     }
   };
 
@@ -114,8 +122,8 @@ function Register() {
         </div>
 
         {/* Error/Success Message */}
-        {message && <p className="text-green-500">{message}</p>}
-        {error && <p className="text-red-500">{error}</p>}
+        {message && <p className="text-green-500 self-center text-sm">{message}</p>}
+        {error && <p className="text-red-500 self-center text-sm">{error}</p>}
 
         <button
           disabled={
