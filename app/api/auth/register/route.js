@@ -16,13 +16,6 @@ export async function POST(request) {
   console.log("Connected to MongoDB");
   const usersCollection = db.collection("users");
 
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://landing-page-five-neon.vercel.app"
-    );
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
   try {
     const body = await request.json();
     const validatedData = registerSchema.parse(body);
@@ -62,7 +55,7 @@ export async function POST(request) {
         id: result.insertedId,
       }),
       { status: 201 },
-      console.log("Register successful")
+      console.log("Register successfull")
     );
   } catch (error) {
     if (error.name === "ZodError") {
