@@ -18,3 +18,16 @@ body {
   color: var(--foreground);
   transition: background-color 0.3s, color 0.3s;
 }
+/* Ensure the background is transparent and the text stays white */
+input:-webkit-autofill {
+  background-color: transparent !important; /* Ensure transparent background */
+  color: white !important; /* Set the text color to white */
+  transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s; /* Keep transitions smooth */
+}
+
+/* Ensure that when autofilled and focused, the background and text color stay consistent */
+input:-webkit-autofill:focus {
+  background-color: transparent !important; /* Keep transparent background */
+  color: white !important; /* Keep text color white */
+}
+
