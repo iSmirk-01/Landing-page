@@ -15,6 +15,13 @@ export async function POST(request) {
   const db = client.db("M2HQ");
   const usersCollection = db.collection("users");
 
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://landing-page-five-neon.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
   try {
     const body = await request.json();
     const validatedData = loginSchema.parse(body);

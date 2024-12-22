@@ -2,11 +2,14 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import Link from "next/link";
+import axios from "axios";
 
 function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    const res = axios.post("http://localhost:3000/api/login", {
+      
+    })
   };
 
   return (

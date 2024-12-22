@@ -12,6 +12,13 @@ const reviewSchema = z.object({
   rating: z.number().min(1).max(5, "Rating must be between 1 and 5"),
 });
 
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://landing-page-five-neon.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
 // Secret key for JWT validation
 const SECRET_KEY = process.env.SECRET_KEY;
 if (!SECRET_KEY)
