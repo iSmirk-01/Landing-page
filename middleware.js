@@ -8,7 +8,7 @@ export function middleware(request) {
   // Allow cross-origin requests from your frontend
   response.headers.set(
     "Access-Control-Allow-Origin",
-    "https://landing-page-kgobbz2ob-ismirk-01s-projects.vercel.app"
+    "https://landing-page-five-neon.vercel.app"
   );
   response.headers.set(
     "Access-Control-Allow-Methods",
