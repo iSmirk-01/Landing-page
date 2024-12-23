@@ -14,6 +14,7 @@ function Register() {
   });
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +32,7 @@ function Register() {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/register", {
+      const res = await axios.post(`${apiUrl}/auth/register`, {
         username: formData.username,
         password: formData.password,
       });
