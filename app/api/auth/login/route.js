@@ -1,14 +1,9 @@
-import { z } from "zod";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import clientPromise from "../../mongodb";
+import { NextResponse } from "next/server";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const SECRET_KEY = process.env.SECRET_KEY;
-
-const loginSchema = z.object({
-  username: z.string().min(1, "Username is required"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
 
 export async function POST(request) {
   const client = await clientPromise;
@@ -16,54 +11,53 @@ export async function POST(request) {
   const usersCollection = db.collection("users");
 
   try {
+    // Add CORS headers
+    if (request.method === "OPTIONS") {
+      return new NextResponse(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Authorization, Content-Type",
+        },
+      });
+    }
+
     const body = await request.json();
-    const validatedData = loginSchema.parse(body);
+    const { username, password } = body;
 
-    // Check if user exists
-    const user = await usersCollection.findOne({
-      username: validatedData.username,
-    });
-
+    const user = await usersCollection.findOne({ username });
     if (!user) {
-      return new Response(
-        JSON.stringify({ error: "Invalid username or password" }),
-        { status: 401 }
-      );
+      return new Response(JSON.stringify({ error: "User not found" }), {
+        status: 404,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
     }
 
-    // Verify password
-    const passwordMatch = await bcrypt.compare(
-      validatedData.password,
-      user.password
-    );
-
-    if (!passwordMatch) {
-      return new Response(
-        JSON.stringify({ error: "Invalid username or password" }),
-        { status: 401 }
-      );
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return new Response(JSON.stringify({ error: "Invalid password" }), {
+        status: 401,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
     }
 
-    // Generate token
-    const token = jwt.sign(
-      { id: user._id, username: user.username },
-      SECRET_KEY,
-      { expiresIn: "1h" }
-    );
-
-    return new Response(
-      JSON.stringify({
-        message: "Login successful",
-        token,
-        username: user.username,
-        id: user._id,
-      }),
-      { status: 200 },
-      console.log("login successful")
-    );
+    const token = jwt.sign({ id: user._id }, SECRET_KEY);
+    return new Response(JSON.stringify({ token }), {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   } catch (error) {
-    return new Response(JSON.stringify({ error: "An error occurred" }), {
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
   }
 }

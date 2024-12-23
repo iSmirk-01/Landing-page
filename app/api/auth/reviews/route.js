@@ -59,11 +59,19 @@ export async function GET(request) {
       .skip(skip)
       .limit(limit)
       .toArray();
-    return new Response(JSON.stringify({ reviews }), { status: 200 });
+    return new Response(JSON.stringify({ reviews }), {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   } catch (error) {
     console.error(error);
     return new Response(JSON.stringify({ error: "Failed to fetch reviews" }), {
       status: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
   }
 }
@@ -79,6 +87,9 @@ export async function POST(request) {
   if (!isAuthenticated) {
     return new Response(JSON.stringify({ error: error.message }), {
       status: error.status,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
   }
 
@@ -98,17 +109,28 @@ export async function POST(request) {
         message: "Review added successfully",
         review: newReview,
       }),
-      { status: 201 }
+      {
+        status: 201,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     );
   } catch (error) {
     console.error(error);
     if (error.name === "ZodError") {
       return new Response(JSON.stringify({ error: error.errors }), {
         status: 400,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       });
     }
     return new Response(JSON.stringify({ error: "Failed to add review" }), {
       status: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
   }
 }

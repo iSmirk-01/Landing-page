@@ -17,6 +17,17 @@ export async function POST(request) {
   const usersCollection = db.collection("users");
 
   try {
+    // Add CORS headers
+    if (request.method === "OPTIONS") {
+      return new NextResponse(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Authorization, Content-Type",
+        },
+      });
+    }
+
     const body = await request.json();
     const validatedData = registerSchema.parse(body);
 
@@ -28,6 +39,9 @@ export async function POST(request) {
     if (existingUser) {
       return new Response(JSON.stringify({ error: "Username already taken" }), {
         status: 409,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       });
     }
 
@@ -54,17 +68,27 @@ export async function POST(request) {
         username: validatedData.username,
         id: result.insertedId,
       }),
-      { status: 201 },
-      console.log("Register successfull")
+      {
+        status: 201,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     );
   } catch (error) {
     if (error.name === "ZodError") {
       return new Response(JSON.stringify({ error: error.errors }), {
         status: 400,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       });
     }
     return new Response(JSON.stringify({ error: "An error occurred" }), {
       status: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
   }
 }

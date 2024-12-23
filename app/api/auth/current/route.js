@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import clientPromise from "../../mongodb";
+import { NextResponse } from "next/server";
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
@@ -9,6 +10,17 @@ export async function GET(request) {
   const usersCollection = db.collection("users");
 
   try {
+    // Add CORS headers
+    if (request.method === "OPTIONS") {
+      return new NextResponse(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Authorization, Content-Type",
+        },
+      });
+    }
+
     const authHeader = request.headers.get("Authorization");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
@@ -28,11 +40,19 @@ export async function GET(request) {
 
     return new Response(
       JSON.stringify({ username: user.username, id: user._id }),
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     );
   } catch (error) {
     return new Response(JSON.stringify({ error: "Invalid token" }), {
       status: 401,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
   }
 }
