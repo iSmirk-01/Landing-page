@@ -3,14 +3,64 @@ import { IoPersonSharp } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import Link from "next/link";
 import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useUser } from "../context/UserProvider";
 
 function Login() {
-  const handleSubmit = (e) => {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    username: "",
+    password: ""
+  });
+  const [message, setMessage] = useState("")
+  const [error, setError] = useState(null)
+  const {setUserData} = useUser()
+  
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData((prev) => ({
+      ...prev, [name]: value
+    }))
+  }
+  
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = axios.post("http://localhost:3000/api/login", {
-      
-    })
-  };
+
+  try {
+    const res = await axios.post(`${apiUrl}/auth/login`, {
+      username: formData.username,
+      password: formData.password,
+    });
+
+    if (res.status === 200) {
+      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("username", res.data.username)
+      setMessage("Login successful")
+      setUserData((prev) => ({
+        ...prev, isLoggedIn: true,
+        username: res.data.username,
+        id: res.data._id
+      }))
+      router.push("/")
+      setFormData((prev) => ({
+        ...prev, username: "", password: "",
+      }))
+    }
+
+  } catch (err) {
+    if (err.response.data.error) {
+      const errorMessage = err.response.data.error;
+      setError(errorMessage);
+    } else {
+      setError("An unexpected error occurred");
+    }
+    console.error("Error posting user data:", err);
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+  }
+};
 
   return (
     <div className="h-screen w-full bg-slate-900 flex justify-center items-center">
@@ -25,6 +75,9 @@ function Login() {
             <IoPersonSharp className="text-gray-400 text-xl" />
             <input
               type="text"
+              value={formData.username}
+              name="username"
+              onChange={handleChange}
               placeholder="Username"
               className="w-full bg-transparent text-white outline-none placeholder-gray-400"
             />
@@ -36,6 +89,9 @@ function Login() {
             <input
               type="password"
               placeholder="Password"
+              value={formData.password}
+              name="password"
+              onChange={handleChange}
               className="w-full bg-transparent text-white outline-none placeholder-gray-400"
             />
           </div>
@@ -47,6 +103,8 @@ function Login() {
           >
             Login
           </button>
+          {message && (<div className="text-green-400 self-center">{message}</div>)}
+          {error && (<div className="text-red-500 self-center">{error}</div>)}
           <p className="text-base">Dont have an account? <Link href="/login/register" className="font-semibold underline active:text-blue-400">Register here</Link></p>
         </div>
       </form>

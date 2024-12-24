@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 import { useUser } from "@/app/context/UserProvider";
+import { useRouter } from "next/navigation";
 
 function Register() {
+  const router = useRouter()
   const [formData, setFromData] = useState({
     username: "",
     password: "",
@@ -41,12 +43,20 @@ function Register() {
       if (res.status === 201) {
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("token", res.data.token);
+        setMessage(res.data.message);
+        router.push("/")
         setUserData((prev) => ({
           ...prev,
           username: res.data.username,
-          token: res.data.token,
+          isLoggedIn: true,
+          id: res.data._id
         }));
-        setMessage(res.data.message);
+        formData((prev) => ({
+          ...prev, 
+          username: "",
+          password: "",
+          confirmPassword: ""
+        }))
       }
     } catch (err) {
       // Check for duplicate username error

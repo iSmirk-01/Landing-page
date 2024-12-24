@@ -14,6 +14,7 @@ export async function POST(request) {
     const body = await request.json();
     const { username, password } = body;
 
+    // Find user in the database
     const user = await usersCollection.findOne({ username });
     if (!user) {
       return new Response(JSON.stringify({ error: "User not found" }), {
@@ -21,6 +22,7 @@ export async function POST(request) {
       });
     }
 
+    // Validate password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return new Response(JSON.stringify({ error: "Invalid password" }), {
@@ -28,11 +30,15 @@ export async function POST(request) {
       });
     }
 
-    const token = jwt.sign({ id: user._id }, SECRET_KEY);
-    return new Response(JSON.stringify({ token }), {
+    // Generate JWT token
+    const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: "1h" });
+
+    // Return username and token
+    return new Response(JSON.stringify({ username: user.username, token }), {
       status: 200,
     });
   } catch (error) {
+    console.error("Error in login API:", error);
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
     });

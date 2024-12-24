@@ -1,13 +1,42 @@
-
+"use client"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function Reviews() {
+  const [reviews, setReviews] = useState([])
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/auth/reviews`);
+        setReviews(res.data.reviews)
+        console.log(res.data.reviews)
+      } catch (error) {
+        console.error("error fetching reviews: ", error)
+      }
+    }
+    fetchReviews()
+  },[apiUrl])
+
   return (
-    <div className="flex flex-col overflow-x-hidden h-full gap-4 items-center w-full">
-      <div className=" text-white flex flex-col h-screen justify-center items-center w-screen overflow-hidden">
-        <div className="flex flex-col bg-slate-800 p-4 rounded-lg w-fit h-fit m-4 justify-center text-2xl border border-sky-300">
-          <br />
-            <p className='text-red-600 font-bold'>under construction</p>
-        </div>
+    <div className="bg-stone-600 w-full h-screen flex items-center justify-center">
+      <div className="bg-slate-800 flex gap-4 overflow-x-auto w-full h-2/4 items-center p-5">
+        {reviews &&
+          reviews[0] &&
+          reviews.map((item) => (
+            <div
+              key={item._id}
+              className="border shrink-0 w-2/12 h-[200px] rounded-md overflow-hidden hover:scale-[1.05] duration-300 transition-all"
+            >
+              <header className="w-full bg-slate-900 p-2 flex justify-center">
+                <div className="">{item.name}</div>
+              </header>
+              <main className="flex justify-center p-4">
+                <div>{item.review}</div>
+              </main>
+            </div>
+          ))}
       </div>
     </div>
   );

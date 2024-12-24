@@ -7,7 +7,7 @@ export function UserProvider({ children }) {
     const [userData, setUserData] = useState({
         id: "",
         username: "",
-        token: "",
+        isLoggedIn: false
     })
 
   return (

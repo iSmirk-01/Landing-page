@@ -1,9 +1,8 @@
 'use client'
-
 import Service from "./components/Service"; //header, details, label
 
-
 export default function Home() {
+
   return (
     <div className="flex flex-col items-center overflow-x-hidden h-full">
       <main className="flex flex-col gap-5 p-4 h-full">

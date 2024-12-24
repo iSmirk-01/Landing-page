@@ -9,7 +9,7 @@ const reviewSchema = z.object({
     .string()
     .min(1)
     .max(500, "Review must be between 1 and 500 characters"),
-  rating: z.number().min(1).max(5, "Rating must be between 1 and 5"),
+  rating: z.number().min(1).max(5, "Rating must be between 1 and 5"), // Added rating field
 });
 
 // Secret key for JWT validation
@@ -59,6 +59,7 @@ export async function GET(request) {
       .skip(skip)
       .limit(limit)
       .toArray();
+
     return new Response(JSON.stringify({ reviews }), {
       status: 200,
     });
