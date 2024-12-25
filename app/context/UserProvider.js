@@ -1,14 +1,53 @@
 "use client"
-import { createContext, useContext, useState } from "react"
+import axios from "axios"
+import { createContext, useContext, useEffect, useState } from "react"
 
 const UserContext = createContext()
 
 export function UserProvider({ children }) {
-    const [userData, setUserData] = useState({
-        id: "",
-        username: "",
-        isLoggedIn: false
-    })
+  const [userData, setUserData] = useState({
+    id: "",
+    username: "",
+    isLoggedIn: false
+  })
+  
+useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return;
+  }
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/auth/current`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const { username, id } = res.data;
+
+      setUserData((prev) => ({
+        ...prev,
+        isLoggedIn: true,
+        username,
+        id: id,
+      }));
+    } catch (err) {
+      console.error("Error fetching user data:", err.response || err.message);
+      if (err.response && err.response.status === 401) {
+        console.log("Invalid token. Removing token from storage.");
+        localStorage.removeItem("token");
+      }
+    }
+  };
+
+  fetchUser();
+}, []);
+
 
   return (
     <UserContext.Provider value={{userData, setUserData}}>

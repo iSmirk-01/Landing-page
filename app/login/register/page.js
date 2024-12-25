@@ -41,7 +41,6 @@ function Register() {
 
       // Check for success response
       if (res.status === 201) {
-        localStorage.setItem("username", res.data.username);
         localStorage.setItem("token", res.data.token);
         setMessage(res.data.message);
         router.push("/")
@@ -65,9 +64,7 @@ function Register() {
       } else {
         setError("An error occurred during registration.");
       }
-
       // Clear any stored user data on error
-      localStorage.removeItem("username");
       localStorage.removeItem("token");
     }
   };

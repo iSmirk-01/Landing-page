@@ -36,7 +36,6 @@ function Login() {
 
     if (res.status === 200) {
       localStorage.setItem("token", res.data.token)
-      localStorage.setItem("username", res.data.username)
       setMessage("Login successful")
       setUserData((prev) => ({
         ...prev, isLoggedIn: true,
@@ -58,7 +57,6 @@ function Login() {
     }
     console.error("Error posting user data:", err);
     localStorage.removeItem("token")
-    localStorage.removeItem("username")
   }
 };
 

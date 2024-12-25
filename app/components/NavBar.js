@@ -33,7 +33,6 @@ function NavBar() {
       id: "",
     }));
     localStorage.removeItem("token");
-    localStorage.removeItem("username");
   };
 
   return (
@@ -48,7 +47,7 @@ function NavBar() {
           </Link>
           {userData.isLoggedIn && (
             <span className="text-base text-gray-200 pl-5 ">
-              Welcome, {userData.username}
+              Welcome, {userData.username || "User"}
             </span>
           )}
         </div>
