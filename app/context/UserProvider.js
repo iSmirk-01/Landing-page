@@ -39,7 +39,12 @@ useEffect(() => {
     } catch (err) {
       console.error("Error fetching user data:", err.response || err.message);
       if (err.response && err.response.status === 401) {
-        console.log("Invalid token. Removing token from storage.");
+              setUserData((prev) => ({
+                ...prev,
+                isLoggedIn: false,
+                username: "",
+                id: "",
+              }));
         localStorage.removeItem("token");
       }
     }
