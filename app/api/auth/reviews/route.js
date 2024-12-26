@@ -54,13 +54,16 @@ export async function GET(request) {
     const limit = parseInt(url.searchParams.get("limit") || "10", 10);
     const skip = (page - 1) * limit;
 
+    // Fetch reviews and count total documents
     const reviews = await reviewsCollection
       .find({})
       .skip(skip)
       .limit(limit)
       .toArray();
 
-    return new Response(JSON.stringify({ reviews }), {
+    const total = await reviewsCollection.countDocuments(); // Total reviews count
+
+    return new Response(JSON.stringify({ reviews, total }), {
       status: 200,
     });
   } catch (error) {
@@ -70,6 +73,7 @@ export async function GET(request) {
     });
   }
 }
+
 
 // Named export for the POST method
 export async function POST(request) {
