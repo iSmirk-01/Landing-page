@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { useUser } from "../context/UserProvider";
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { userData, setUserData } = useUser();
+  const { userData, setUserData } = useUser()
 
   const handleLogout = () => {
     setUserData((prev) => ({
@@ -19,9 +19,6 @@ function NavBar() {
     }));
     localStorage.removeItem("token");
   };
-
-  const linkStyles =
-    "block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal transition-all duration-300";
 
   return (
     <nav className="w-full bg-Yellow">
@@ -43,8 +40,7 @@ function NavBar() {
         {/* Hamburger Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)} // Toggle state
-          className="inline-flex items-center p-2 w-10 h-10 justify-center rounded-lg md:hidden focus:outline-none text-Charcoal hover:bg-Charcoal hover:text-Yellow transition-all duration-300"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          className="inline-flex items-center p-2 w-10 h-10 justify-center rounded-lg md:hidden focus:outline-none text-Charcoal hover:bg-Charcoal hover:text-Yellow duration-[300ms] transition-all"
           aria-controls="navbar-menu"
           aria-expanded={menuOpen}
         >
@@ -68,14 +64,14 @@ function NavBar() {
         <div
           id="navbar-menu"
           className={`${
-            menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-          } w-full md:flex md:w-auto md:items-center overflow-hidden transition-all duration-300`}
+            menuOpen ? "block" : "hidden"
+          } w-full md:flex md:w-auto md:items-center`}
         >
           <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 sm:bg-Charcoal md:bg-Yellow sm:text-Yellow md:text-Charcoal md:font-semibold">
             <li>
               <Link
                 href="/"
-                className={`${linkStyles} ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal ${
                   pathname === "/"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -87,7 +83,7 @@ function NavBar() {
             <li>
               <Link
                 href="/contacts"
-                className={`${linkStyles} ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal  ${
                   pathname === "/contacts"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -99,7 +95,7 @@ function NavBar() {
             <li>
               <Link
                 href="/reviews"
-                className={`${linkStyles} ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal  ${
                   pathname === "/reviews"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -111,7 +107,7 @@ function NavBar() {
             <li>
               <Link
                 href="/mission"
-                className={`${linkStyles} ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal  ${
                   pathname === "/mission"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -122,7 +118,7 @@ function NavBar() {
             </li>
             {userData.isLoggedIn ? (
               <li
-                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 text-red-500  sm:hover:bg-Yellow bg sm:hover:bg-opacity-50 hover:bg-Charcoal transition-all duration-300 cursor-pointer`}
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 text-red-500 hover:md:bg-Charcoal cursor-pointer sm:hover:bg-Yellow sm:hover:bg-opacity-50`}
                 onClick={handleLogout}
               >
                 Logout
@@ -131,10 +127,10 @@ function NavBar() {
               <li>
                 <Link
                   href="/login"
-                  className={`${linkStyles} ${
+                  className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal ${
                     pathname === "/login"
                       ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
-                      : ""
+                      : " "
                   }`}
                 >
                   Login
