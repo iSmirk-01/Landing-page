@@ -4,21 +4,9 @@
 
 /* globals.css */
 :root {
-  --background: #FFFFFF; /* Light mode background */
-  --foreground: #1f2937; /* Light mode text */
+  background-color: black;
 }
 
-.dark {
-  --background: #000000 ; /* Dark mode background */
-  --foreground: #f9fafb; /* Dark mode text */
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  transition: background-color 0.3s, color 0.3s;
-}
-/* Ensure the background is transparent and the text stays white */
 input:-webkit-autofill {
   background-color: transparent !important; /* Ensure transparent background */
   color: white !important; /* Set the text color to white */

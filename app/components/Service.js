@@ -1,17 +1,20 @@
 "use client";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Popup from "./Popup";
 
-import { useTheme } from "../context/ThemeProvider";
+const Service = ({ header, details, label, html, button }) => {
+  const [isPopupVisible, setPopupVisible] = useState(false);
 
-const Service = ({ header, details, label, button }) => {
-  const { theme } = useTheme(); // Get the current theme
+  const openPopup = () => setPopupVisible(true);
+  const closePopup = () => setPopupVisible(false);
 
   return (
-    <div
-      className={`${
-        theme === "dark"
-          ? "bg-gray-700 text-white border-cyan-300 border"
-          : "bg-gray-200 text-black border-black border"
-      } flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md`}
+    <motion.div
+      className={`flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md bg-slate-700 text-white`}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
       <header className="flex justify-center">
         <h1 className="text-3xl font-semibold">{header}</h1>
@@ -21,17 +24,20 @@ const Service = ({ header, details, label, button }) => {
       </main>
       <footer className="flex flex-col gap-2 justify-center">
         <h3 className="font-semibold flex justify-center">{label}</h3>
-        <button
-          className={`${
-            theme === "dark"
-              ? "bg-blue-700 hover:bg-blue-600 text-white"
-              : "bg-blue-600 hover:bg-blue-500 text-white"
-          } rounded-md p-2`}
-        >
-          {button || "Details and Pricing"}
-        </button>
+
+        <div className="relative self-center w-full">
+          <button
+            onClick={openPopup}
+            className="px-4 py-2 bg-blue-600 text-white w-full rounded-lg hover:bg-blue-700"
+          >
+            {button}
+          </button>
+            <Popup isVisible={isPopupVisible} onClose={closePopup}>
+              <div className="text-black flex justify-center">{html}</div>
+            </Popup>
+        </div>
       </footer>
-    </div>
+    </motion.div>
   );
 };
 

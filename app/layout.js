@@ -1,5 +1,4 @@
 import "./globals.css";
-import { ThemeProvider } from "./context/ThemeProvider";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Notice from "./components/Notice";
@@ -14,14 +13,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ThemeProvider>
           <UserProvider>
             <NavBar />
               <Notice />
               {children}
             <Footer />
           </UserProvider>
-        </ThemeProvider>
       </body>
     </html>
   );

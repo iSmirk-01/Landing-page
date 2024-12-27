@@ -1,16 +1,11 @@
 "use client";
 
-import { useTheme } from "../context/ThemeProvider";
-
 function Notice() {
-  const { theme } = useTheme();
 
   return (
     <p
       aria-live="polite"
-      className={`text-lg sm:text-base p-5 ${
-        theme === "dark" ? "text-white" : "text-black"
-      } flex justify-center`}
+      className={`text-lg sm:text-base p-5 flex justify-center text-white`}
     >
       <em>
         Services vary due to my class schedule. For additional information or
