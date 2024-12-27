@@ -19,3 +19,16 @@ input:-webkit-autofill:focus {
   color: white !important; /* Keep text color white */
 }
 
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(44, 99, 154);
+  width: 5px;
+}

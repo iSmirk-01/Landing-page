@@ -69,9 +69,13 @@ function Login() {
         <h1 className="self-center text-2xl font-bold">Login</h1>
         <div className="flex flex-col gap-5">
           {/* Username Field */}
-          <div className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 bg-gray-700 hover:scale-[1.05] transition-all duration-300">
+          <div
+            onClick={() => document.getElementById("name").focus()}
+            className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 bg-gray-700 hover:scale-[1.05] transition-all duration-300"
+          >
             <IoPersonSharp className="text-gray-400 text-xl" />
             <input
+              id="name"
               type="text"
               value={formData.username}
               name="username"
@@ -82,9 +86,13 @@ function Login() {
           </div>
 
           {/* Password Field */}
-          <div className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 bg-gray-700 hover:scale-[1.05] transition-all duration-300">
+          <div
+            onClick={() => document.getElementById("password").focus()}
+            className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 bg-gray-700 hover:scale-[1.05] transition-all duration-300"
+          >
             <RiLockPasswordFill className="text-gray-400 text-xl" />
             <input
+              id="password"
               type="password"
               placeholder="Password"
               value={formData.password}
@@ -101,9 +109,19 @@ function Login() {
           >
             Login
           </button>
-          {message && (<div className="text-green-400 self-center">{message}</div>)}
-          {error && (<div className="text-red-500 self-center">{error}</div>)}
-          <p className="text-base">Dont have an account? <Link href="/login/register" className="font-semibold underline active:text-blue-400">Register here</Link></p>
+          {message && (
+            <div className="text-green-400 self-center">{message}</div>
+          )}
+          {error && <div className="text-red-500 self-center">{error}</div>}
+          <p className="text-base">
+            Dont have an account?{" "}
+            <Link
+              href="/login/register"
+              className="font-semibold underline active:text-blue-400"
+            >
+              Register here
+            </Link>
+          </p>
         </div>
       </form>
     </div>

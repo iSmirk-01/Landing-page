@@ -5,6 +5,7 @@ import axios from "axios";
 import Rating from "../components/Rating";
 import Link from "next/link";
 import { motion } from "motion/react";
+import Skeleton from "../components/ui/ReviewSkeleton";
 
 export default function Reviews() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -42,13 +43,15 @@ export default function Reviews() {
     <div className="bg-stone-600 w-full h-screen flex flex-col items-center justify-center text-white">
       <div className="bg-slate-800 flex gap-4 overflow-x-auto w-full h-2/4 items-center p-5">
         {loading ? (
-          <div>Loading...</div>
+          <Skeleton count={7} />
         ) : reviews.length > 0 ? (
           reviews.map((item) => (
             <motion.div
               key={item._id}
               className="border shrink-0 w-[200px] h-[200px] rounded-md overflow-hidden hover:scale-[1.05] duration-300 transition-all flex flex-col"
-              initial={{ scale: 0 }} whileInView={{ scale: 1 }} 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.1 }} 
             >
               <header className="w-full bg-slate-900 p-2 flex justify-center">
                 <div>{item.name}</div>
