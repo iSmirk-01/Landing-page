@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-      <footer className="flex flex-col p-4 bg-DarkThemeMainBlue items-center w-full gap-2 overflow-x-hidden">
+      <footer className="flex flex-col p-4 bg-DarkThemeMainBlue items-center w-full gap-2 overflow-x-hidden bg-Yellow text-Charcoal">
           <p className="">
             Disclaimer: All custom build services come with a money back
             guarantee if parts are delivered damaged or defective. Replacements

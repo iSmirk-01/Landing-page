@@ -67,11 +67,11 @@ function NavBar() {
             menuOpen ? "block" : "hidden"
           } w-full md:flex md:w-auto md:items-center`}
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 sm:bg-Charcoal md:bg-Yellow sm:text-Yellow md:text-Charcoal md:font-semibold">
+          <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-Charcoal md:bg-Yellow text-Yellow md:text-Charcoal md:font-semibold">
             <li>
               <Link
                 href="/"
-                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-Yellow hover:bg-opacity-50 md:hover:text-MutedTeal md:hover:bg-Charcoal  ${
                   pathname === "/"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -83,7 +83,7 @@ function NavBar() {
             <li>
               <Link
                 href="/contacts"
-                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal  ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-Yellow hover:bg-opacity-50 md:hover:text-MutedTeal md:hover:bg-Charcoal  ${
                   pathname === "/contacts"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -95,7 +95,7 @@ function NavBar() {
             <li>
               <Link
                 href="/reviews"
-                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal  ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-Yellow hover:bg-opacity-50 md:hover:text-MutedTeal md:hover:bg-Charcoal  ${
                   pathname === "/reviews"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -107,7 +107,7 @@ function NavBar() {
             <li>
               <Link
                 href="/mission"
-                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal  ${
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-Yellow hover:bg-opacity-50 md:hover:text-MutedTeal md:hover:bg-Charcoal  ${
                   pathname === "/mission"
                     ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                     : ""
@@ -118,7 +118,7 @@ function NavBar() {
             </li>
             {userData.isLoggedIn ? (
               <li
-                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 text-red-500 hover:md:bg-Charcoal cursor-pointer sm:hover:bg-Yellow sm:hover:bg-opacity-50`}
+                className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 text-red-500 hover:md:bg-Charcoal cursor-pointer hover:bg-Yellow hover:bg-opacity-50`}
                 onClick={handleLogout}
               >
                 Logout
@@ -127,7 +127,7 @@ function NavBar() {
               <li>
                 <Link
                   href="/login"
-                  className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 sm:hover:bg-Yellow sm:hover:bg-opacity-50 md:hover:text-Yellow md:hover:bg-Charcoal ${
+                  className={`block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 hover:bg-Yellow hover:bg-opacity-50 md:hover:text-MutedTeal md:hover:bg-Charcoal ${
                     pathname === "/login"
                       ? "font-semibold text-MutedTeal underline decoration-solid underline-offset-4 decoration-MutedTeal"
                       : " "

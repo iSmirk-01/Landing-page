@@ -4,7 +4,7 @@
 
 /* globals.css */
 :root {
-  background-color: black;
+  background-color: #36454F;
 }
 
 input:-webkit-autofill {
@@ -29,6 +29,6 @@ input:-webkit-autofill:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(44, 99, 154);
+  background-color: #ccb675;
   width: 5px;
 }

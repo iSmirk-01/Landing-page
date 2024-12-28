@@ -30,7 +30,7 @@ export default {
         Charcoal: "#36454F",
         Yellow: "#FFD966",
         MutedTeal: "#3B9D9D",
-        SoftSageGreen: "#88B04B,"
+        SoftSageGreen: "#88B04B,",
       },
     },
   },

@@ -11,7 +11,7 @@ const Service = ({ header, details, label, html, button }) => {
 
   return (
     <motion.div
-      className={`flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md bg-slate-700 text-white`}
+      className={`flex flex-col gap-5 text-lg p-5 rounded-lg shadow-md bg-MutedTeal text-Charcoal`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -28,7 +28,7 @@ const Service = ({ header, details, label, html, button }) => {
         <div className="relative self-center w-full">
           <button
             onClick={openPopup}
-            className="px-4 py-2 bg-blue-600 text-white w-full rounded-lg hover:bg-blue-700"
+            className="px-4 py-2 bg-Charcoal text-white w-full rounded-lg hover:bg-Yellow hover:text-Charcoal"
           >
             {button}
           </button>
