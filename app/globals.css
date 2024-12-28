@@ -4,8 +4,17 @@
 
 /* globals.css */
 :root {
-  background-color: #36454F;
+  background-color: #000000;
 }
+
+nav {
+  /* Add a solid border at the bottom */
+
+
+  /* Add a subtle shadow below the navbar */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
 
 input:-webkit-autofill {
   background-color: transparent !important; /* Ensure transparent background */

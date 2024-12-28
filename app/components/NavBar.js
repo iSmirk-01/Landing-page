@@ -21,12 +21,12 @@ function NavBar() {
   };
 
   return (
-    <nav className="w-full bg-Yellow">
+    <nav className="w-full bg-Black">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo and "Logged in as user" next to it */}
         <div className="flex items-center space-x-3">
           <Link href="/" className="flex items-center">
-            <span className="self-center text-2xl font-bold text-Charcoal">
+            <span className="self-center text-2xl font-bold text-Yellow">
               M2 HQ
             </span>
           </Link>
@@ -40,7 +40,7 @@ function NavBar() {
         {/* Hamburger Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)} // Toggle state
-          className="inline-flex items-center p-2 w-10 h-10 justify-center rounded-lg md:hidden focus:outline-none text-Charcoal hover:bg-Charcoal hover:text-Yellow duration-[300ms] transition-all"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center rounded-lg md:hidden focus:outline-none text-Yellow hover:bg-Yellow hover:text-DeepBlue duration-[300ms] transition-all"
           aria-controls="navbar-menu"
           aria-expanded={menuOpen}
         >
@@ -67,7 +67,7 @@ function NavBar() {
             menuOpen ? "block" : "hidden"
           } w-full md:flex md:w-auto md:items-center`}
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-Charcoal md:bg-Yellow text-Yellow md:text-Charcoal md:font-semibold">
+          <ul className="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-Black text-Yellow md:text-Charcoal md:font-semibold">
             <li>
               <Link
                 href="/"

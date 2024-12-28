@@ -27,10 +27,11 @@ export default {
         dynamic: "clamp(1rem, 3vw + 1rem, 4rem)", // Dynamic margin
       },
       colors: {
-        Charcoal: "#36454F",
-        Yellow: "#FFD966",
+        Yellow: "#FFD700",
+        Black: "#000000",
         MutedTeal: "#3B9D9D",
         SoftSageGreen: "#88B04B,",
+        DeepBlue: "#1A237E",
       },
     },
   },
