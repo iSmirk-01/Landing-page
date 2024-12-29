@@ -40,8 +40,8 @@ export default function Reviews() {
   const totalPages = Math.ceil(totalReviews / limit);
 
   return (
-    <div className="bg-stone-600 w-full h-screen flex flex-col items-center justify-center text-white">
-      <div className="bg-slate-800 flex gap-4 overflow-x-auto w-full h-2/4 items-center p-5">
+    <div className="w-full h-screen flex flex-col items-center justify-center text-white">
+      <div className="flex gap-4 overflow-x-auto w-full h-2/4 items-center p-5 bg-slate-950 border">
         {loading ? (
           <Skeleton count={7} />
         ) : reviews.length > 0 ? (
@@ -51,7 +51,7 @@ export default function Reviews() {
               className="border shrink-0 w-[200px] h-[200px] rounded-md overflow-hidden hover:scale-[1.05] duration-300 transition-all flex flex-col"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              transition={{ duration: 0.1 }} 
+              transition={{ duration: 0.1 }}
             >
               <header className="w-full bg-slate-900 p-2 flex justify-center">
                 <div>{item.name}</div>
@@ -59,7 +59,7 @@ export default function Reviews() {
               <main className="flex flex-col gap-4 justify-center p-4 flex-1">
                 <div>{item.review}</div>
               </main>
-              <footer className="flex justify-center bg-slate-700 p-2">
+              <footer className="flex justify-center bg-slate-900 p-2">
                 <Rating rating={item.rating} maxRating={5} />
               </footer>
             </motion.div>
@@ -68,12 +68,12 @@ export default function Reviews() {
           <div>No reviews available</div>
         )}
       </div>
-      <div className="flex justify-center items-center gap-4 mt-4">
+      <div className="flex justify-center items-center gap-4 mt-4 p-5">
         {/* Pagination Controls */}
         <button
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
-          className="bg-gray-700 text-white px-4 py-2 rounded disabled:opacity-50"
+          className="bg-gray-700 text-white px-4 py-2 rounded disabled:opacity-50  active:bg-Yellow/60 hover:bg-blue-600 disabled:active:bg-gray-700 disabled:hover:hover:bg-gray-700"
         >
           Previous
         </button>
@@ -83,14 +83,17 @@ export default function Reviews() {
         <button
           onClick={() => setPage((prev) => prev + 1)}
           disabled={page === totalPages}
-          className="bg-gray-700 text-white px-4 py-2 rounded disabled:opacity-50"
+          className="bg-gray-700 text-white px-4 py-2 rounded disabled:opacity-50  active:bg-Yellow/60 hover:bg-blue-600 disabled:active:bg-gray-700 disabled:hover:hover:bg-gray-700"
         >
           Next
         </button>
       </div>
-      <div className="mt-4 text-white">
+      <div className="mt-4 text-white text-lg">
         Want to leave a review?{" "}
-        <Link href="/reviews/submit" className="underline">
+        <Link
+          href="/reviews/submit"
+          className="underline text-Yellow font-semibold"
+        >
           Click here
         </Link>
       </div>
