@@ -1,8 +1,8 @@
 function Mission() {
   return (
-    <div className="flex flex-col min-h-screen w-full bg-gray-900">
-      <div className="flex flex-col m-auto prose prose-lg prose-invert bg-slate-700 p-6 rounded-lg border border-sky-400 max-w-2xl">
-        <h1 className="font-semibold text-center text-white">
+    <div className="flex flex-col min-h-screen w-full">
+      <div className="flex flex-col m-auto prose prose-lg p-6 rounded-lg border bg-white/20 border-sky-500/50 max-w-2xl">
+        <h1 className="font-semibold text-center text-Yellow">
           Mission Statement
         </h1>
         <p className="text-gray-200">
