@@ -1,9 +1,13 @@
 "use client"
 import { FaStar } from "react-icons/fa";
 import { useReducer, useState } from "react";
-import axios from "axios";
+import { IoPersonSharp } from "react-icons/io5";
+import { MdOutlineRateReview } from "react-icons/md";
+import { useUser } from "@/app/context/UserProvider";
+import Link from "next/link";
 
 function AddReview() {
+  const {userData} = useUser()
   const [status, setStatus] = useState("");
   const initState = {
     username: "",
@@ -63,13 +67,23 @@ function AddReview() {
   };
 
   return (
-    <div className="h-screen w-full bg-slate-800 flex items-center justify-center text-black">
+    <div className="h-screen w-full flex items-center justify-center text-black">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 bg-slate-700 p-4"
+        className="flex flex-col gap-4 p-5 border w-2/4 h-2/4 items-center justify-center bg-white/20 rounded scale-110"
       >
-        <label className="flex gap-2">
-          Username:
+        {!userData.isLoggedIn && (
+          <div className="text-Yellow font-bold">
+            We value your feedback! Please {" "}
+            <Link className="underline text-blue-500" href="/login">
+              login
+            </Link>
+            {" "}
+            to leave a review.
+          </div>
+        )}
+        <div className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 hover:scale-[1.05] transition-all duration-300">
+          <IoPersonSharp className="text-Yellow" />
           <input
             type="text"
             placeholder="Your Name"
@@ -81,13 +95,14 @@ function AddReview() {
                 value: e.target.value,
               })
             }
+            className="w-full bg-transparent text-white outline-none placeholder-gray-400"
           />
-        </label>
-        <label className="flex gap-2">
-          Review:
+        </div>
+        <div className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 hover:scale-[1.05] transition-all duration-300">
+          <MdOutlineRateReview className="text-Yellow" />
           <input
             type="text"
-            placeholder="Nice job!"
+            placeholder="Review"
             required
             onChange={(e) =>
               dispatch({
@@ -96,10 +111,10 @@ function AddReview() {
                 value: e.target.value,
               })
             }
+            className="w-full bg-transparent text-white outline-none placeholder-gray-400"
           />
-        </label>
+        </div>
         <div className="flex gap-1 items-center">
-          <span className="text-white">Rating:</span>
           {[1, 2, 3, 4, 5].map((star) => (
             <FaStar
               key={star}
@@ -113,7 +128,9 @@ function AddReview() {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded"
+          className="bg-blue-500 text-white py-2 px-4 rounded mt-6
+          hover:bg-Yellow active:bg-blue-200 disabled:bg-gray-400 hover:text-black disabled:hover:text-white"
+          disabled={!state.username || !state.review || !userData.isLoggedIn}
         >
           Submit
         </button>
