@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { IoLogoDiscord } from "react-icons/io5";
 
 function Contacts() {
@@ -9,12 +10,14 @@ function Contacts() {
         <h1 className="font-semibold self-center text-2xl shadow-md mb-4 text-Yellow">
           Contacts
         </h1>
-        <div className="flex items-center bg-blue-600/20 rounded gap-2 p-3 border cursor-pointer w-full justify-center">
-          <span className="text-blue-400">
-            <IoLogoDiscord className="scale-[1.3]" />
-          </span>
-          Discord
-        </div>
+        <Link className="w-full" href={"https://discord.gg/pbwdPyqPYt"}>
+          <div className="flex items-center bg-blue-600/20 rounded gap-2 p-3 border cursor-pointer w-full justify-center">
+            <span className="text-blue-400">
+              <IoLogoDiscord className="scale-[1.3]" />
+            </span>
+            Discord
+          </div>
+        </Link>
         <div className="flex items-center border p-3 rounded bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-orange-500/30 cursor-pointer w-full h-[49.33px] gap-[0.1rem] justify-center">
           <span className="">
             <svg
@@ -61,9 +64,7 @@ function Contacts() {
           </a>
         </div>
         <div className="flex items-center rounded gap-1 w-full justify-center font-bold">
-          <span className="text-red-500">
-            Email:
-          </span>
+          <span className="text-red-500">Email:</span>
           Mtwotech.business@gmail.com
         </div>
         <div className="font-bold">

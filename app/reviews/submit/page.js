@@ -76,7 +76,7 @@ function AddReview() {
           <div className="text-Yellow font-bold">
             We value your feedback! Please {" "}
             <Link className="underline text-blue-500" href="/login">
-              login
+              log in
             </Link>
             {" "}
             to leave a review.
