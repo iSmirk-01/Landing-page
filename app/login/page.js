@@ -61,17 +61,17 @@ function Login() {
 };
 
   return (
-    <div className="h-screen w-full bg-slate-900 flex justify-center items-center">
+    <div className="h-screen w-full flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="h-fit w-fit bg-gray-700 flex flex-col gap-6 p-12 text-lg text-white drop-shadow-md"
+        className="h-fit w-fit border bg-white/20 flex flex-col gap-6 p-12 text-lg drop-shadow-md"
       >
-        <h1 className="self-center text-2xl font-bold">Login</h1>
+        <h1 className="self-center text-2xl font-bold text-Yellow">Login</h1>
         <div className="flex flex-col gap-5">
           {/* Username Field */}
           <div
             onClick={() => document.getElementById("name").focus()}
-            className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 bg-gray-700 hover:scale-[1.05] transition-all duration-300"
+            className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 hover:scale-[1.05] transition-all duration-300"
           >
             <IoPersonSharp className="text-gray-400 text-xl" />
             <input
@@ -88,7 +88,7 @@ function Login() {
           {/* Password Field */}
           <div
             onClick={() => document.getElementById("password").focus()}
-            className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 bg-gray-700 hover:scale-[1.05] transition-all duration-300"
+            className="flex items-center gap-3 border border-gray-500 rounded px-3 py-2 hover:scale-[1.05] transition-all duration-300"
           >
             <RiLockPasswordFill className="text-gray-400 text-xl" />
             <input
@@ -105,7 +105,8 @@ function Login() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-slate-600 text-white py-2 rounded hover:bg-slate-700 transition active:bg-sky-900"
+            disabled={!formData.username && !formData.password}
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-Yellow hover:text-black transition active:bg-sky-900 disabled:bg-blue-500 disabled:text-white"
           >
             Login
           </button>
@@ -113,11 +114,11 @@ function Login() {
             <div className="text-green-400 self-center">{message}</div>
           )}
           {error && <div className="text-red-500 self-center">{error}</div>}
-          <p className="text-base">
+          <p className="text-base text-white">
             Dont have an account?{" "}
             <Link
               href="/login/register"
-              className="font-semibold underline active:text-blue-400"
+              className="font-semibold underline active:text-blue-400 text-Yellow hover:text-blue-500"
             >
               Register here
             </Link>

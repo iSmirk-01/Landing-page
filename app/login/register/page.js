@@ -72,19 +72,19 @@ function Register() {
   const { password, confirmPassword } = formData;
 
   return (
-    <div className="h-screen w-full bg-slate-900 flex justify-center items-center">
+    <div className="h-screen w-full flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col p-12 drop-shadow-md gap-6 text-lg bg-gray-700"
+        className="flex flex-col p-12 drop-shadow-md gap-6 text-lg border bg-white/20"
       >
-        <h1 className="self-center font-bold text-2xl">Register</h1>
+        <h1 className="self-center font-bold text-2xl text-Yellow">Register</h1>
 
         {/* Username */}
         <div
           className="flex items-center px-2 py-3 gap-3 rounded border border-gray-500 hover:scale-[1.05] transition-all duration-300"
           onClick={() => document.getElementById("username-input").focus()}
         >
-          <IoPersonSharp />
+          <IoPersonSharp className="text-white" />
           <input
             id="username-input"
             placeholder="Username"
@@ -100,7 +100,7 @@ function Register() {
           className="flex items-center px-2 py-3 gap-3 rounded border border-gray-500 hover:scale-[1.05] transition-all duration-300"
           onClick={() => document.getElementById("password-input").focus()}
         >
-          <RiLockPasswordFill />
+          <RiLockPasswordFill className="text-white" />
           <input
             id="password-input"
             placeholder="Password"
@@ -118,7 +118,7 @@ function Register() {
             document.getElementById("confirm-password-input").focus()
           }
         >
-          <RiLockPasswordFill />
+          <RiLockPasswordFill className="text-white" />
           <input
             id="confirm-password-input"
             placeholder="Confirm Password"
@@ -137,16 +137,16 @@ function Register() {
           disabled={
             !password || !confirmPassword || password !== confirmPassword
           }
-          className="w-full bg-slate-600 text-white py-2 rounded hover:bg-slate-700 transition active:bg-sky-900"
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-Yellow hover:text-black transition active:bg-sky-900 disabled:bg-blue-500 disabled:text-white"
         >
           Register
         </button>
 
-        <p className="text-base">
+        <p className="text-base text-white">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold underline active:text-blue-400"
+            className="font-semibold underline active:text-blue-400 text-Yellow"
           >
             Login here
           </Link>
