@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
+import { FaX } from "react-icons/fa6";
 
 const Popup = ({ isVisible, onClose, children }) => {
   if (!isVisible) return null;
@@ -24,14 +24,14 @@ const Popup = ({ isVisible, onClose, children }) => {
             animate={{ y: "0", opacity: 1 }}
             exit={{ y: "-100vh", opacity: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 25 }}
-            className="relative bg-slate-700 rounded-lg shadow-lg p-6 z-10 w-full max-w-md"
+            className="relative bg-white/20 backdrop-blur-md rounded-lg shadow-lg p-6 z-10 w-full max-w-md"
           >
             {/* Close Button */}
             <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+              className="absolute top-3 right-3 text-red-500 hover:text-Yellow"
               onClick={onClose}
             >
-              ✖
+              <FaX />
             </button>
             {children}
           </motion.div>
