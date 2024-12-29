@@ -1,30 +1,19 @@
 "use client";
-import { AiOutlineMail } from "react-icons/ai";
 import { IoLogoDiscord } from "react-icons/io5";
-import { FaInstagramSquare } from "react-icons/fa";
-import Image from "next/image";
-
-
 
 function Contacts() {
 
   return (
     <div className="flex flex-col overflow-x-hidden h-screen gap-4 items-center w-full text-white">
-      <div className="flex gap-4 flex-col bg-white/20 p-5 rounded-lg w-3/4 justify-center items-center border border-sky-300/60 m-4">
+      <div className="flex gap-4 flex-col bg-white/20 p-4 rounded-lg w-full sm:w-3/4 justify-center items-center border border-sky-300/60">
         <h1 className="font-semibold self-center text-2xl shadow-md mb-4 text-Yellow">
           Contacts
         </h1>
-        <div className="flex items-center bg-red-700/40 rounded gap-2 p-3 border cursor-pointer w-full justify-center">
-          <span className="text-red-500">
-            <AiOutlineMail className="scale-[1.3]" />
-          </span>
-          Mtwotech.business@gmail.com
-        </div>
         <div className="flex items-center bg-blue-600/20 rounded gap-2 p-3 border cursor-pointer w-full justify-center">
           <span className="text-blue-400">
             <IoLogoDiscord className="scale-[1.3]" />
           </span>
-          Discord example link
+          Discord
         </div>
         <div className="flex items-center border p-3 rounded bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-orange-500/30 cursor-pointer w-full h-[49.33px] gap-[0.1rem] justify-center">
           <span className="">
@@ -70,6 +59,12 @@ function Contacts() {
           >
             Instagram
           </a>
+        </div>
+        <div className="flex items-center rounded gap-1 w-full justify-center font-bold">
+          <span className="text-red-500">
+            Email:
+          </span>
+          Mtwotech.business@gmail.com
         </div>
         <div className="font-bold">
           <span className="font-semibold text-cyan-300">Mobile: </span>
