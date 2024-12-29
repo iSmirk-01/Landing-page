@@ -12,6 +12,10 @@ nav {
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
 }
 
+.footerHighlight {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 1);
+}
+
 input:-webkit-autofill {
   background-color: transparent !important; /* Ensure transparent background */
   color: white !important; /* Set the text color to white */
