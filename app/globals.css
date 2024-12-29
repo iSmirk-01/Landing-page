@@ -8,13 +8,22 @@
 }
 
 nav {
-  /* Add a solid border at the bottom */
-
-
   /* Add a subtle shadow below the navbar */
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
 }
 
+.instagram-icon {
+  width: 30px; /* Adjust as needed */
+  height: 50px; /* Ensure it maintains the aspect ratio */
+  display: block; /* Prevent unexpected layout issues */
+}
+
+.icon-container {
+  display: inline-block; /* Keeps the container inline */
+  width: auto;
+  height: auto;
+  overflow: hidden; /* Prevents unexpected scaling issues */
+}
 
 input:-webkit-autofill {
   background-color: transparent !important; /* Ensure transparent background */

@@ -11,7 +11,7 @@ const Service = ({ header, details, label, html, button }) => {
 
   return (
     <motion.div
-      className={`flex flex-col gap-6 m-5 text-lg p-5 rounded-lg shadow-sm border  shadow-slate-50 text-Yellow bg-white/30 `}
+      className={`flex flex-col gap-6 m-5 text-lg p-5 rounded-lg shadow-sm border  shadow-slate-50 text-Yellow bg-white/20`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
